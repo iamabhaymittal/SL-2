@@ -13,7 +13,7 @@ int main()
 { 
 	int fd1; 
 
-	int c_w=0,c_s=0;
+	int c_c=0,c_w=0,c_s=0;
 	char * myfifo = "/tmp/myfifo"; 
 
 	mkfifo(myfifo, 0666); 
@@ -23,9 +23,15 @@ int main()
 	{ 
 		c_w=0;
 		c_s=0;
+		c_c=0;
 		fd1 = open(myfifo,O_RDONLY); 
 		read(fd1, str1, 80); 
 		
+		for(int i=0;i<(strlen(str1)-1);i++)
+		{
+			if(isalnum())
+				c_c++;
+		}
 		for(int i=0;i<(strlen(str1)-1);i++)
 		{
 			if(str1[i] == ' ')
